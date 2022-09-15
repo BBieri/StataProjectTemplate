@@ -14,6 +14,8 @@
 * 
 * Key Variables:
 *			- <Insert list of key variables>
+* Sysinfo:
+*			- <Add Sysinfo here>
 * ==============================================================================
 
 **# Initial Housekeeping =======================================================
@@ -37,12 +39,12 @@ foreach command of local user_commands {
  }
  
 // Loop to update packages to their latest version.
-foreach command of local user_commands {
-	cap which `command'
-    if _rc == 111 {
-		adoupdate `command'
-    }
- }
+//foreach command of local user_commands {
+//	cap which `command'
+//    if _rc == 111 {
+//		adoupdate `command'
+//    }
+// }
 
 **# Setting Users and Paths ====================================================
 
