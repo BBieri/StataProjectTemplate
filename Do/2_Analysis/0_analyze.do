@@ -15,7 +15,7 @@
 * ==============================================================================
 
 clear all
-log close all
+log close _all
 
 **# Set local data paths which need to be commented out in post-production. ====
 global projectfolder "C:\Users\bjorn\Documents\WB\GitHub\StataProjectTemplate"
@@ -27,6 +27,9 @@ global tempdata "$data\99_Temp"
 
 global graphs "$projectfolder\Graphs"
 global tables "$projectfolder\Tables"
+
+global loganalysis"$projectfolder\Logs\2_Analysis\log_analyze.log"
+log using "$loganalysis", replace name(DataAnalyze)
 
 **#  Load Datasets =============================================================
 

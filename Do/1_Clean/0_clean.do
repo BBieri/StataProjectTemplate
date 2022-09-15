@@ -15,15 +15,19 @@
 * ==============================================================================
 
 clear all
-log close all
+log close _all
 
-**# Set local data paths which need to be commented out in post-production. ====
+**# Set local data paths and start logging ====
 global projectfolder "C:\Users\bjorn\Documents\WB\GitHub\StataProjectTemplate"
 global data "$projectfolder\Data"
 global raw "$data\0_Raw"
 global intermediatedata "$data\1_Intermediate"
 global outdata "$data\2_Out"
 global tempdata "$data\99_Temp"
+
+global logclean "$projectfolder\Logs\1_Clean\log_clean.log"
+log using "$logclean", replace name(DataClean)
+
 
 **#  Load Datasets =============================================================
 
