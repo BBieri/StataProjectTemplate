@@ -1,0 +1,72 @@
+----------------------------------------------------------
+      name:  DataClean
+       log:  C:\Users\bjorn\Documents\WB\GitHub\StataProje
+> ctTemplate\Logs\1_Clean\log_clean.log
+  log type:  text
+ opened on:  15 Sep 2022, 12:09:58
+
+. 
+. 
+. **#  Load Datasets =====================================
+> ========================
+. 
+. use "$intermediatedata\income_democracy_imported.dta"
+
+. 
+. **#  Clean the data ====================================
+> ========================
+. 
+. // Here comes the magic!
+. 
+. **#  Save clean data to out folder =====================
+> ========================
+. // NB: Use .dta for ease of reimport down the line and u
+> se the "_clean"
+. // suffix to differentiate with raw and imported dataset
+> s.
+. 
+. save "$tempdata\income_democracy_out.dta", replace
+(file
+    C:\Users\bjorn\Documents\WB\GitHub\StataProjectTempl
+    > ate\Data\99_Temp\income_democracy_out.dta not
+    found)
+file
+    C:\Users\bjorn\Documents\WB\GitHub\StataProjectTempl
+    > ate\Data\99_Temp\income_democracy_out.dta saved
+
+. 
+end of do-file
+
+. do "C:\Users\bjorn\AppData\Local\Temp\STD3abc_000000.tmp
+> "
+
+. * ======================================================
+> ========================
+. * Date:         <Insert Date>
+. * Project:      <Insert Title>
+. * Do-file title: Importing data
+. *
+. * Authors:      - <Insert Authors and Email Adresses>
+. *
+. * Purpose:      Run and estimate models. Produce tables 
+> and graphs.
+. *
+. * Datasets used: 
+. *                       - <Insert names of datasets used
+> >
+. * Output: <Insert names of datasets, graphs, and tables 
+> produced>
+. * 
+. * Key Variables: <Insert list of key variables>
+. * ======================================================
+> ========================
+. 
+. clear all
+
+. log close _all
+      name:  DataClean
+       log:  C:\Users\bjorn\Documents\WB\GitHub\StataProje
+> ctTemplate\Logs\1_Clean\log_clean.log
+  log type:  text
+ closed on:  15 Sep 2022, 12:15:04
+----------------------------------------------------------

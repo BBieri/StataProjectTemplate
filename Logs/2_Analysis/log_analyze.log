@@ -1,0 +1,154 @@
+----------------------------------------------------------
+      name:  DataAnalyze
+       log:  C:\Users\bjorn\Documents\WB\GitHub\StataProje
+> ctTemplate\Logs\2_Analysis\log_analyze.log
+  log type:  text
+ opened on:  15 Sep 2022, 12:15:20
+
+. 
+. **#  Load Datasets =====================================
+> ========================
+. 
+. use "$outdata\income_democracy_clean.dta"
+
+. 
+. **#  Run the models ====================================
+> ========================
+. 
+. egen country_id = group(country), label lname(country)
+
+. xtset country_id year
+
+Panel variable: country_id (unbalanced)
+ Time variable: year, 1960 to 2000, but with gaps
+         Delta: 1 unit
+
+. 
+. xtreg log_gdppc log_pop age_1 educ, vce(robust)
+
+Random-effects GLS regression                   Number of 
+> obs     =        683
+Group variable: country_id                      Number of 
+> groups  =         96
+
+R-squared:                                      Obs per gr
+> oup:
+     Within  = 0.5603                                     
+>     min =          1
+     Between = 0.7916                                     
+>     avg =        7.1
+     Overall = 0.7707                                     
+>     max =          8
+
+                                                Wald chi2(
+> 3)      =     377.72
+corr(u_i, X) = 0 (assumed)                      Prob > chi
+> 2       =     0.0000
+
+                            (Std. err. adjusted for 96 clu
+> sters in country_id)
+----------------------------------------------------------
+> --------------------
+             |               Robust
+   log_gdppc | Coefficient  std. err.      z    P>|z|     
+> [95% con                                                
+>         f. interval]
+-------------+--------------------------------------------
+> --------------------
+     log_pop |  -.0682248     .03277    -2.08   0.037    -
+> .1324528                                                
+>            -.0039967
+       age_1 |  -4.446542   .6315462    -7.04   0.000     
+> -5.68435                                                
+>            -3.208734
+        educ |   .1274858    .018577     6.86   0.000     
+> .0910756                                                
+>              .163896
+       _cons |   9.929596   .4236138    23.44   0.000     
+> 9.099329                                                
+>             10.75986
+-------------+--------------------------------------------
+> --------------------
+     sigma_u |  .44308786
+     sigma_e |  .20871629
+         rho |  .81840589   (fraction of variance due to u
+> _i)
+----------------------------------------------------------
+> --------------------
+
+. 
+. **# Generate Tables ====================================
+> ========================
+. 
+. // Estout Documentation: http://repec.sowi.unibe.ch/stat
+> a/estout/
+. 
+. eststo panelestexample1: quietly xtreg log_gdppc log_pop
+>  age_1 educ, vce(robust)
+
+. eststo panelestexample2: quietly xtreg log_gdppc log_pop
+>  age_1 age_2 educ, vce(robust)
+
+. esttab, compress
+
+------------------------------------
+                 (1)          (2)   
+           log_gdppc    log_gdppc   
+------------------------------------
+log_pop      -0.0682*     -0.0554   
+             (-2.08)      (-1.65)   
+
+age_1         -4.447***    -4.634***
+             (-7.04)      (-7.49)   
+
+educ           0.127***     0.127***
+              (6.86)       (6.71)   
+
+age_2                      -1.245   
+                          (-1.57)   
+
+_cons          9.930***     10.21***
+             (23.44)      (22.83)   
+------------------------------------
+N                683          683   
+------------------------------------
+t statistics in parentheses
+* p<0.05, ** p<0.01, *** p<0.001
+
+. 
+. esttab using "$tables\example.tex", label nostar ///
+>    title(Regression table\label{tab1}) ///
+>    replace
+(output written to C:\Users\bjorn\Documents\WB\GitHub\Stat
+> aProjectTemplate\Tables\example.tex)
+
+. 
+. eststo clear
+
+. 
+. **# Generate Graphs ====================================
+> ========================
+.         
+. * Create graph
+. preserve
+
+. drop if country_id > 100
+(661 observations deleted)
+
+. drop if country_id < 81
+(555 observations deleted)
+
+. xtline log_gdppc, ytitle(Log GDP per capita (USD))
+
+. graph export "$graphs\examplegraph.png", replace
+file
+    C:\Users\bjorn\Documents\WB\GitHub\StataProjectTempl
+    > ate\Graphs\examplegraph.png saved as PNG format
+
+. restore
+
+. 
+. 
+end of do-file
+
+. exit, clear

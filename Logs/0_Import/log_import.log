@@ -1,0 +1,101 @@
+----------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\bjorn\Documents\WB\GitHub\StataProje
+> ctTemplate\Logs\0_Import\log_import.log
+  log type:  text
+ opened on:  15 Sep 2022, 12:06:47
+
+. 
+. **#  Start import ======================================
+> ========================
+. 
+. // NB: These are example datasets from S-W Econometrics 
+> book.
+. import excel "$raw\income_democracy.xlsx", first
+(13 vars, 1,369 obs)
+
+. // use "$raw\income_democracy.dta" // Same file
+. 
+. **#  Save to intermediate folder =======================
+> ========================
+. // NB: Use .dta for ease of reimport down the line and u
+> se the "_imported"
+. // suffix to differentiate with raw data.
+. 
+. save "$intermediatedata\income_democracy_imported.dta", 
+> replace
+file
+    C:\Users\bjorn\Documents\WB\GitHub\StataProjectTempl
+    > ate\Data\1_Intermediate\income_democracy_imported.
+    > dta saved
+
+. 
+end of do-file
+
+. help log
+
+. do "C:\Users\bjorn\AppData\Local\Temp\STD3abc_000000.tmp
+> "
+
+. * ======================================================
+> ========================
+. * Date:         <Insert Date>
+. * Project:      <Insert Title>
+. * Do-file title: Importing data
+. *
+. * Authors:      - <Insert Authors and Email Adresses>
+. *
+. * Purpose:      Load imported datasets and clean them.
+. *
+. * Datasets used: 
+. *                       - <Insert names of datasets used
+> >
+. * Output: <Insert names of datasets, graphs, and tables 
+> produced>
+. * 
+. * Key Variables: <Insert list of key variables>
+. * ======================================================
+> ========================
+. 
+. clear all
+
+. log close all
+log all not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\bjorn\AppData\Local\Temp\STD3abc_000000.tmp
+> "
+
+. * ======================================================
+> ========================
+. * Date:         <Insert Date>
+. * Project:      <Insert Title>
+. * Do-file title: Importing data
+. *
+. * Authors:      - <Insert Authors and Email Adresses>
+. *
+. * Purpose:      Load imported datasets and clean them.
+. *
+. * Datasets used: 
+. *                       - <Insert names of datasets used
+> >
+. * Output: <Insert names of datasets, graphs, and tables 
+> produced>
+. * 
+. * Key Variables: <Insert list of key variables>
+. * ======================================================
+> ========================
+. 
+. clear all
+
+. log close _all
+      name:  <unnamed>
+       log:  C:\Users\bjorn\Documents\WB\GitHub\StataProje
+> ctTemplate\Logs\0_Import\log_import.log
+  log type:  text
+ closed on:  15 Sep 2022, 12:09:58
+----------------------------------------------------------
