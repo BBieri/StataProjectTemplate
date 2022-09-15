@@ -49,14 +49,14 @@ foreach command of local user_commands {
 **# Setting Users and Paths ====================================================
 
 // Set this value to the user currently using this file
-global user  1
+global user  "username"
 
-if $user == 1 {
-    global projectfolder "C:\Users\bjorn\Documents\WB\GitHub\StataProjectTemplate"
+if user == "username" {
+    global projectfolder "C:\Users\username\Documents\StataProjectTemplate"
 }
 
- if $user == 2 {
-    global projectfolder ""  	// Enter the file path to the project folder for
+ if user == "" {
+    global projectfolder ""  	// Enter the file path to the project folder
 								// and add ifelse if more than two users.
  }
 
