@@ -17,3 +17,8 @@ of the analysis were run in this README.
 ### Sysinfo
 
 Paste your sysinfo here.
+
+### Acknowledgements:
+
+This template reuses and was in part inspired by the excellent [`{ietoolkit}`](https://github.com/worldbank/ietoolkit) package
+by the DIME team at the World Bank.
